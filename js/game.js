@@ -10,7 +10,7 @@
 
 
 
-// Monster Object
+// Coin Object
 
 
 
@@ -18,7 +18,7 @@
 	Canvas & Graphics Initialization
 			creates canvas & initializes images
 
-	TODO: uncomment the Hero Image and Monster Image section
+	TODO: uncomment the Hero Image and Coin Image section
 			once you've finished creating their objects
 
 ***************************************************************/
@@ -51,15 +51,15 @@ bgImage.src = "images/background.png";	//fill this in with your background image
 
 
 
-// Monster Image Section
-// uncomment the following lines once you've created your monster
+// Coin Image Section
+// uncomment the following lines once you've created your coin
 
-// var monsterReady = false;
-// var monsterImage = new Image();
-// monsterImage.onload = function () {
-// 	monsterReady = true;
+// var coinReady = false;
+// var coinImage = new Image();
+// coinImage.onload = function () {
+// 	coinReady = true;
 // };
-// monsterImage.src = monster.imageUrl;
+// coinImage.src = coin.imageUrl;
 
 
 
@@ -100,7 +100,7 @@ var keyCode = {
 	Reset Game Function
 
 	TODO: 	set hero position to the middle of the canvas
-			set monster position to somewhere random
+			set coin position to somewhere random
 
 ***************************************************************/
 
@@ -109,7 +109,7 @@ var reset = function () {
 	//set hero position
 
 
-	//set monster position
+	//set coin position
 
 
 };
@@ -121,7 +121,7 @@ var reset = function () {
 	INPUT: modifier = amount of time passed since the last frame
 
 	TODO: 	updates hero position if arrow keys are pressed
-			if hero is touching the monster, move monster and update points
+			if hero is touching the coin, move coin and update points
 
 ***************************************************************/
 
@@ -131,7 +131,7 @@ var update = function (modifier) {
 
 
 
-	// checks if hero is touching monster
+	// checks if hero is touching coin
 	
 
 
@@ -144,7 +144,7 @@ var update = function (modifier) {
 			renders our game by drawing our gameobjects on the canvas
 
 	TODO: 	draw the background onto the entire canvas
-			draw the hero and monster in their (x,y) positions
+			draw the hero and coin in their (x,y) positions
 			render the score in the top left
 
 ***************************************************************/
@@ -157,7 +157,7 @@ var render = function () {
 	//draw hero
 
 
-	//draw monster
+	//draw coin
 
 
 	//score rendering
