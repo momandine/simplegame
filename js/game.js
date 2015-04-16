@@ -2,7 +2,7 @@
 	Game Objects Initialization
 
 	TODO: create hero object
-		  create monster object
+		  create coin object
 
 ***************************************************************/
 
