@@ -7,12 +7,20 @@
 ***************************************************************/
 
 // Hero Object
-
-
+var hero = {
+    x: 100,
+    y: 100,
+    speed: 200,
+    imageUrl: "images/hero.png"
+}
 
 // Coin Object
 
-
+var coin = {
+    x: 100,
+    y: 150,
+    imageUrl: "images/coin.jpg"
+}
 
 /***************************************************************
 	Canvas & Graphics Initialization
@@ -42,24 +50,24 @@ bgImage.src = "images/background.png";	//fill this in with your background image
 // Hero Image Section
 // uncomment the following lines once you've created your hero
 
-// var heroReady = false;
-// var heroImage = new Image();
-// heroImage.onload = function () {
-// 	heroReady = true;
-// };
-// heroImage.src = hero.imageUrl;	
+var heroReady = false;
+var heroImage = new Image();
+heroImage.onload = function () {
+    heroReady = true;
+};
+heroImage.src = hero.imageUrl;	
 
 
 
 // Coin Image Section
 // uncomment the following lines once you've created your coin
 
-// var coinReady = false;
-// var coinImage = new Image();
-// coinImage.onload = function () {
-// 	coinReady = true;
-// };
-// coinImage.src = coin.imageUrl;
+var coinReady = false;
+var coinImage = new Image();
+coinImage.onload = function () {
+    coinReady = true;
+};
+coinImage.src = coin.imageUrl;
 
 
 
@@ -86,14 +94,21 @@ var keyCode = {
 };
 
 //keyPressed object
-
+keyPressed = {};
 
 //keydown event listener
-
+addEventListener("keydown", 
+                 function (event) {
+                    keyPressed[event.keyCode] = true;
+                 },
+                 false)
 
 //keyup event listener
-
-
+addEventListener("keyup", 
+                 function (event) {
+                     delete keyPressed[event.keyCode];
+                 },
+                 false)
 
 
 /***************************************************************
@@ -125,16 +140,31 @@ var reset = function () {
 
 ***************************************************************/
 
-var update = function (modifier) {	
-
+var update = function (modifier) {
 	//checks which keys are pressed
-
-
+    var steps = hero.speed * modifier;
+    if (keyCode.up in keyPressed) {
+        if (hero.y > 0) {
+            hero.y -= steps;
+        }
+    }
+    if (keyCode.down in keyPressed) {
+        if (hero.y < canvas.height - 32) {
+            hero.y += steps;
+        }
+    }
+    if (keyCode.left in keyPressed) {
+        if (hero.x > 0) {
+            hero.x -= steps;
+        }
+    }
+    if (keyCode.right in keyPressed) {
+        if (hero.x < canvas.width - 32) {
+            hero.x += steps;
+        }
+    }
 
 	// checks if hero is touching coin
-	
-
-
 };
 
 
@@ -152,13 +182,19 @@ var update = function (modifier) {
 var render = function () {
 
 	//draw background
-
+    if (bgReady) {
+        ctx.drawImage(bgImage, 0, 0);
+    }
 
 	//draw hero
-
+    if (heroReady) {
+        ctx.drawImage(heroImage, hero.x, hero.y);
+    }
 
 	//draw coin
-
+    if (heroReady) {
+        ctx.drawImage(coinImage, coin.x, coin.y);
+    }
 
 	//score rendering
 
@@ -194,3 +230,4 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 var then = Date.now();
 reset();
 main();
+
