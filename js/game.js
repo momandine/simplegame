@@ -22,6 +22,9 @@ var coin = {
     imageUrl: "images/coin.jpg"
 }
 
+// Coin counter
+var coinsCaught = 0;
+
 /***************************************************************
 	Canvas & Graphics Initialization
 			creates canvas & initializes images
@@ -122,9 +125,12 @@ addEventListener("keyup",
 var reset = function () {
 
 	//set hero position
-
+    hero.x = canvas.width/2;
+    hero.y = canvas.height/2;
 
 	//set coin position
+    coin.x = Math.random() * (canvas.width - 32);
+    coin.y = Math.random() * (canvas.width - 32);
 
 
 };
@@ -197,8 +203,11 @@ var render = function () {
     }
 
 	//score rendering
-
-
+    ctx.fillColor = "rgb(250, 250, 250)";
+    ctx.font = "24px Helvetica";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText("Coins caught: " + coinsCaught, 32, 32);
 
 };
 
