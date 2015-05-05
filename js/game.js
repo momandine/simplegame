@@ -24,6 +24,7 @@ var coin = {
 
 // Coin counter
 var coinsCaught = 0;
+var timeLeft = 60;
 
 /***************************************************************
 	Canvas & Graphics Initialization
@@ -147,6 +148,9 @@ var reset = function () {
 ***************************************************************/
 
 var update = function (modifier) {
+    if (timeLeft <= 0) {
+        return
+    }
 	//checks which keys are pressed
     var steps = hero.speed * modifier;
     if (keyCode.up in keyPressed) {
@@ -185,7 +189,7 @@ var update = function (modifier) {
 
 ***************************************************************/
 
-var render = function () {
+var render = function (delta) {
 
 	//draw background
     if (bgReady) {
@@ -208,8 +212,16 @@ var render = function () {
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     ctx.fillText("Coins caught: " + coinsCaught, 32, 32);
+    
+    //Timer rendering
+    ctx.fillText("Time left: " + timeLeft.toFixed(2), 230, 32)
 
 };
+
+var gameOver = function () {
+    ctx.fillText("GAME OVER", canvas.width/2 - 50, canvas.height/2);
+    ctx.fillText("Score = " + coinsCaught, canvas.width/2 - 50, canvas.height/2 + 30);
+}
 
 /***************************************************************
 	Main Function & Setup 
@@ -222,8 +234,14 @@ var main = function () {
 	var now = Date.now();
 	var delta = now - then;
 
-	update(delta / 1000);
-	render();
+    if (timeLeft > 0) {
+        timeLeft -= delta / 1000;
+        update(delta / 1000);
+        render();
+    }
+    else {
+        gameOver()
+    }
 
 	then = now;
 
