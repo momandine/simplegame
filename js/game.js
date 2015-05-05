@@ -174,6 +174,11 @@ var update = function (modifier) {
     }
 
 	// checks if hero is touching coin
+    if (Math.abs(hero.x - coin.x) < 32 &&
+        Math.abs(hero.y - coin.y) < 32) {
+            coinsCaught ++;
+            reset();
+    }
 };
 
 
