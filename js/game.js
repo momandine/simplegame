@@ -132,8 +132,8 @@ var reset = function () {
     hero.y = canvas.height/2;
 
 	//set coin position
-    coin.x = Math.random() * (canvas.width - 32);
-    coin.y = Math.random() * (canvas.width - 32);
+    coin.x = 32 + Math.random() * (canvas.width - 96);
+    coin.y = 32 + Math.random() * (canvas.height - 96);
 
 
 };
