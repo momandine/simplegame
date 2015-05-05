@@ -72,7 +72,10 @@ coinImage.onload = function () {
 };
 coinImage.src = coin.imageUrl;
 
+// Audio section
 
+var snd = new Audio("http://media.kexp.org/podcasts/songoftheday/media/2015-04-30_2412_nadine_shah_-_fool.mp3")
+snd.play()
 
 /***************************************************************
 	Keyboard Controls
