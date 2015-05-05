@@ -74,6 +74,8 @@ coinImage.onload = function () {
 coinImage.src = coin.imageUrl;
 
 
+var snd = new Audio("file.wav"); // buffers automatically when created
+snd.play();
 
 /***************************************************************
 	Keyboard Controls
